@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Car Sale System</title>
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/skeleton.css" media="screen" />
+        <link rel="stylesheet" href="sliders/flexslider.css" media="screen"/>
+        
+    </h:head>
+ <div class="wrap">
+    <h:body>
+     
+            <header id="header" class="clearfix">
+                <a href="index.xhtml" id="logo"> <img src="images/logo.png" alt="car dealer"/> </a>
+                <h:form>
+                    <nav id="navigation" class="navigation">
+                    <ul>
+                        <li><a href="index.xhtml">Home </a></li>
+                        <li><a href ="all-cars.xhtml">All Cars</a></li>
+<!--                        <li><h:commandLink id="continue"
+                                           action="all-cars"
+                                           immediate="true">
+                                <a>All Car</a>
+                            </h:commandLink></li>-->
+                        <li><a href="contact.xhtml">Contact</a></li>
+                        <li class="current-menu-item"><a href="register.xhtml">Register </a></li>
+                        <li><a href="login.xhtml">Login </a></li>
+                        <li><a> </a></li>
+                    </ul>
+                </nav>
+                </h:form>
+                
+            </header>
+        <div class="top-panel clearfix">
+            <div class="widget_custom_register">
+                <h3 class="widget-title">User Register</h3>
+                <h:form  id="boxpanel" class="form-panel">
+                    <fieldset>
+                        <label for="LastName">Last-Name</label>
+                        <h:inputText id="LastName" label="LastName"
+                                     value="#{registerManagedBean.lastName}"
+                                     required="true" 
+                                     requiredMessage="You must enter your last-name.">
+                            <f:validateRegex pattern="^[A-Za-z0-9]+$"/>
+                        </h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="FirstName">First-Name</label>
+                        <h:inputText id="modelName" label="FirstName"
+                                     value="#{registerManagedBean.firstName}"
+                                     required="true"
+                                     requiredMessage="You must enter your first-name."
+                                     >
+                        <f:validateRegex pattern="^[A-Za-z0-9]+$"/>
+                        </h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="UserType" >User-Type</label>
+                        <h:selectOneMenu value="#{registerManagedBean.userType}">
+                            <f:selectItem itemLabel="Customer" itemValue="0"/>
+                            <f:selectItem itemLabel="Salesman" itemValue="1"/>
+                           
+                        </h:selectOneMenu>
+                        
+<!--                        <h:inputText id="carType"></h:inputText>-->
+                    </fieldset>
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <h:inputText id="email" label="email"
+                                     value="#{registerManagedBean.emailString}"
+                                     required="true"
+                                     requiredMessage="You must enter your email-address."
+                                     ></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password</label>
+                        <h:inputSecret id="password" label="password"
+                                       value="#{registerManagedBean.password}"
+                                       required="true"
+                                       requiredMessage="">
+                        </h:inputSecret>
+                    </fieldset>
+                    <fieldset>
+                        <label for="address">Address</label>
+                        <h:inputText id="address"
+                                     value="#{registerManagedBean.address}"></h:inputText>
+                                     
+                    </fieldset>
+                    <fieldset>
+                        <label for="phoneNumber">Phone-Number</label>
+                        <h:inputText id="number" label="phoneNumber"
+                                     value="#{registerManagedBean.phoneNumber}"
+                                     required="true"
+                                     requiredMessage="you must input you phoneNumber">
+                                     
+                        </h:inputText>
+                    </fieldset>
+                    
+                    <div class="clear"></div>
+                    <h:commandButton id="submitRegister" class="submit-search" 
+                                     value="Register" action="#{registerManagedBean.addUser()}">
+                    </h:commandButton>
+                    <p> <h:outputText class="outputError" value="#{registerManagedBean.messageString}"/>
+                    </p>
+                </h:form>
+            </div> <!-- .formPanel-->
+           
+            
+        </div>
+            
+            
+            <footer id="footer" class="container">
+                 <p class="copyright">Copyright &copy; 2016. By Alex. All rights reserved</p>
+            </footer>
+      
+    
+    </h:body>
+  </div>
+    
+    
+    
+    
+</html>
+

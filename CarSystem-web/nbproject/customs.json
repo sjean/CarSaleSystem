@@ -1,0 +1,11 @@
+{
+    "attributes": {},
+    "elements": {
+        "h:inputText": {},
+        "h:form": {},
+        "h:inputTextarea": {},
+        "h:commandButton": {},
+        "h:message": {},
+        "f:validateLongRange": {}
+    }
+}

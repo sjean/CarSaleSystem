@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Car Sale System</title>
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/skeleton.css" media="screen" />
+        <link rel="stylesheet" href="sliders/flexslider.css" media="screen"/>
+        
+    </h:head>
+ <div class="wrap">
+    <h:body>
+     
+            <header id="header" class="clearfix">
+                <a href="index.xhtml" id="logo"> <img src="images/logo.png" alt="car dealer"/> </a>
+                <h:form>
+                    <nav id="navigation" class="navigation">
+                    <ul>
+                        <li><a href="index.xhtml">Home </a></li>
+                        <li><a href ="all-cars.xhtml">All Cars</a></li>
+<!--                        <li><h:commandLink id="continue"
+                                           action="all-cars"
+                                           immediate="true">
+                                <a>All Car</a>
+                            </h:commandLink></li>-->
+                        <li><a href="contact.xhtml">Contact</a></li>
+                        <li><a href="register.xhtml">Register </a></li>
+                        <li class="current-menu-item"><a href="login.xhtml">Login </a></li>
+                        <li><a> </a></li>
+                    </ul>
+                </nav>
+                </h:form>
+                
+            </header>
+        <div class="top-panel clearfix">
+            <div class="widget_custom_register">
+                <h3 class="widget-title">User Login</h3>
+                <h:form  id="boxpanel" class="form-panel">
+                    <fieldset>
+                        <label for="email">Email-address</label>
+                        <h:inputText id="email" label="emailAddress"
+                                     value="#{registerManagedBean.emailString}"
+                                     required="true" 
+                                     requiredMessage="You must enter your EmailAddress."></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password</label>
+                        <h:inputSecret id="password" label="password"
+                                       value="#{registerManagedBean.password}"
+                                       required="true"
+                                       requiredMessage="">
+                        </h:inputSecret>
+                    </fieldset>
+                    <div class="clear"></div>
+                    <h:commandButton id="submitLogin" class="submit-search" 
+                                     value="Login" action="#{registerManagedBean.login}">
+                    </h:commandButton>
+                    <p> <h:outputText class="outputError" value="#{registerManagedBean.messageString}"/>
+                    </p>
+
+                </h:form>
+            </div> <!-- .formPanel-->
+           
+            
+        </div>
+            
+            
+            <footer id="footer" class="container">
+                 <p class="copyright">Copyright &copy; 2016. By Alex. All rights reserved</p>
+            </footer>
+      
+    
+    </h:body>
+  </div>
+    
+     
+    
+</html>
+

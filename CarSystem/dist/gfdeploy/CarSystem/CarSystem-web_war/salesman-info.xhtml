@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Car Sale System</title>
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/skeleton.css" media="screen" />
+        <link rel="stylesheet" href="sliders/flexslider.css" media="screen"/>
+        
+    </h:head>
+ <div class="wrap">
+    <h:body>
+     
+            <header id="header" class="clearfix">
+                <a href="index.xhtml" id="logo"> <img src="images/logo.png" alt="car dealer"/> </a>
+                <h:form>
+                    <h:commandButton class="logout"  value="Logout" action="login.xhtml"></h:commandButton>
+                    <h:outputText class="logout" value="#{registerManagedBean.user.firstName}"></h:outputText>
+                   
+                    <nav id="navigation" class="navigation">
+                    <ul>
+                        <li><a href="index.xhtml">Home </a></li>
+                        <li><a href ="all-cars.xhtml">All Cars</a></li>
+<!--                        <li><h:commandLink id="continue"
+                                           action="all-cars"
+                                           immediate="true">
+                                <a>All Car</a>
+                            </h:commandLink></li>-->
+                        <li><a href="contact.xhtml">Contact</a></li>
+                        <li><a href="order-management.xhtml">Order-Management</a></li>
+                        <li class="current-menu-item"><a href="salesman-info.xhtml">Salesman-center </a></li>
+                        <li><a> </a></li>
+                    </ul>
+                </nav>
+                </h:form>
+                
+            </header>
+        <div class="top-panel clearfix">
+            <div class="widget_custom_search">
+                <h3 class="widget-title">User Search</h3>
+                <h:form  id="boxpanel1" class="form-panel">
+                    <fieldset>
+                        <label for="password">userId</label>
+                        <h:inputText id="userid" label="userId"
+                                       value="#{registerManagedBean.id}"
+                                       required="true"
+                                       requiredMessage="You must input ID">
+                        </h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="LastName">Last-Name</label>
+                        <h:inputText id="LastName" label="LastName"
+                                     value="#{registerManagedBean.lastName}"
+                                     required="true" 
+                                     requiredMessage="You must enter last-name."></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="FirstName">First-Name</label>
+                        <h:inputText id="modelName" label="FirstName"
+                                     value="#{registerManagedBean.firstName}"
+                                     required="true"
+                                     requiredMessage="You must enter first-name."
+                                     ></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="UserType" >User-Type</label>
+                        <h:selectOneMenu value="#{registerManagedBean.userType}">
+                            <f:selectItem itemLabel="Customer" itemValue="0"/>
+                            <f:selectItem itemLabel="Salesman" itemValue="1"/>
+                           
+                        </h:selectOneMenu>
+                    </fieldset> 
+                    <fieldset>
+                        <label for="email">Email-address</label>
+                        <h:inputText id="email" label="emailAddress"
+                                     value="#{registerManagedBean.emailString}"
+                                     required="true" 
+                                     requiredMessage="You must enter the EmailAddress."></h:inputText>
+                    </fieldset>
+<!--                        <h:inputText id="carType"></h:inputText>-->
+                   
+                    
+                    <div class="clear"></div>
+                    <h:commandButton id="submitLogin" class="submit-search" 
+                                     value="Search" action="#{registerManagedBean.customerQuery}">
+                    </h:commandButton>
+                    <br/>
+                    <h:outputText class="outputError" value="#{registerManagedBean.messageString}"/>
+                    
+
+                </h:form>
+            </div> <!-- .formPanel-->
+            
+             <div class="widget_custom_search">
+                <h3 class="widget-title">Car Search</h3>
+                <h:form  id="boxpanel3" class="form-panel">
+                    <fieldset>
+                        <label for="ModelNo">Car-ID.</label>
+                        <h:inputText id="carid" label="carId"
+                                     value="#{indexManagedBean.VIN}"
+                                     required="true" 
+                                     requiredMessage="You must enter the ID."></h:inputText>
+                    </fieldset>
+                    
+                    <div class="clear"></div>
+                    <h:commandButton id="submitSearch" class="submit-search" 
+                                     value="Search" action="${indexManagedBean.searchCarBySalesman()}">
+                    </h:commandButton>
+                </h:form>
+                <p id="outputError"> <h:outputText value="#{indexManagedBean.messageString}"/>
+                    </p>
+            </div> <!-- .formPanel-->
+         
+            <div class="widget_custom_search">
+                <h3 class="widget-title">Personal Information</h3>
+                <h:form  id="boxpanel" class="form-panel">
+                    <fieldset>
+                        <label for="LastName">Last-Name</label>
+                        <h:inputText id="lastname" label="lastName"
+                                     value="#{registerManagedBean.user.lastName}">
+                    </h:inputText>
+                        
+                    </fieldset>
+                    <fieldset>
+                        <label for="FirstName">First-Name</label>
+                        <h:inputText id="modelName" label="FirstName"
+                                     value="#{registerManagedBean.user.firstName}">
+                                    </h:inputText>
+                    </fieldset>
+<!--                    <fieldset>
+                        <label for="UserType" >User-Type</label>
+                        <h:selectOneMenu value="#{registerManagedBean.userType}">
+                            <f:selectItem itemLabel="Customer" itemValue="0"/>
+                            <f:selectItem itemLabel="Salesman" itemValue="1"/>
+                           
+                        </h:selectOneMenu>
+                        
+                        <h:inputText id="carType"></h:inputText>
+                    </fieldset>-->
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <h:inputText id="email" label="email"
+                                     value="#{registerManagedBean.user.emailString}"
+                                     required="true"
+                                     requiredMessage="You must enter your email-address."
+                                     ></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password</label>
+                        <h:inputSecret id="password" label="password"
+                                       value="#{registerManagedBean.user.password}"
+                                       required="true"
+                                       requiredMessage="">
+                        </h:inputSecret>
+                    </fieldset>
+                    <fieldset>
+                        <label for="address">Address</label>
+                        <h:inputText id="address"
+                                     value="#{registerManagedBean.user.address}">
+                        </h:inputText>
+                                     
+                    </fieldset>
+                    <fieldset>
+                        <label for="phoneNumber">Phone-Number</label>
+                        <h:inputText id="number" label="phoneNumber"
+                                     value="#{registerManagedBean.user.number}"
+                                     required="true"
+                                     requiredMessage="you must input you phoneNumber">
+                                     
+                        </h:inputText>
+                    </fieldset>
+                    
+                    <div class="clear"></div>
+                    <h:commandButton id="submitRegister" class="submit-search" 
+                                     value="Logout" action="#{registerManagedBean.addUser()}">
+                    
+                    </h:commandButton>
+
+                </h:form>
+            </div> <!-- .formPanel-->
+           
+            
+        </div>
+        
+        
+           
+           
+            
+            
+            
+            <footer id="footer" class="container">
+                 <p class="copyright">Copyright &copy; 2016. By Alex. All rights reserved</p>
+            </footer>
+      
+    
+    </h:body>
+  </div>
+    
+     
+    
+</html>
+

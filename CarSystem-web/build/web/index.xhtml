@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Car Sale System</title>
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/skeleton.css" media="screen" />
+        <link rel="stylesheet" href="sliders/flexslider.css" media="screen"/>
+        
+    </h:head>
+ <div class="wrap">
+    <h:body>
+     
+            <header id="header" class="clearfix">
+                <a href="index.xhtml" id="logo"> <img src="images/logo.png" alt="car dealer"/> </a>
+                <h:form>
+                    <c:if test="#{not empty registerManagedBean.user}">
+                    <h:commandButton class="logout"  value="Logout" action="#{registerManagedBean.logOut()}">
+                    </h:commandButton>
+                    <h:outputText class="logout" value="#{registerManagedBean.user.firstName}"></h:outputText>
+                    </c:if>
+                    <nav id="navigation" class="navigation">
+                        <ul>
+                        <li class="current-menu-item"><a href="faces/index.xhtml">Home </a></li>
+                        <li><a href ="faces/all-cars.xhtml">All Cars</a></li>
+                        <li><a href="faces/contact.xhtml">Contact</a></li>
+                        <!--<li><h:link outcome="register" value="Register"></h:link>></li>-->
+                        <li><a href="faces/register.xhtml">Register</a></li>
+                        <li><a href="faces/login.xhtml">Login </a></li>
+                        <li><a> </a></li>
+                    </ul>
+                </nav>
+                </h:form>
+                
+            </header>
+        <div class="top-panel clearfix">
+            <div class="widget_custom_search">
+                <h3 class="widget-title">Quick Search</h3>
+                <h:form  id="boxpanel" class="form-panel">
+                    <fieldset>
+                        <label for="ModelNo">Model-No.</label>
+                        <h:inputText id="ModelNo" label="Number"
+                                     value="#{indexManagedBean.modelNo}"
+                                     required="true" 
+                                     requiredMessage="You must enter the modeNo."></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="modelName">Model-Name</label>
+                        <h:inputText id="modelName" label="Name"
+                                     value="#{indexManagedBean.modelName}"
+                                     required="true"
+                                     ></h:inputText>
+                    </fieldset>
+                    <fieldset>
+                        <label for="carType" >Car-Type</label>
+                        <h:selectOneMenu value="#{indexManagedBean.type}">
+                            <f:selectItem itemLabel="Setan" itemValue="0"/>
+                            <f:selectItem itemLabel="4WheelDrive" itemValue="1"/>
+                            <f:selectItem itemLabel="Truck" itemValue="2"/>
+                        </h:selectOneMenu>
+                        
+<!--                        <h:inputText id="carType"></h:inputText>-->
+                    </fieldset>
+                    <fieldset>
+                        <label for="make">make</label>
+                        <h:inputText id="make" label="make"
+                                     value="#{indexManagedBean.manufacture}"></h:inputText>
+                    </fieldset>
+                    <div class="clear"></div>
+                    <h:commandButton id="submitSearch" class="submit-search" 
+                                     value="Search" action="${indexManagedBean.searchCar}">
+                    </h:commandButton>
+
+                </h:form>
+            </div> <!-- .formPanel-->
+            <div id="slider" class="flexslider clearfix">
+                <c:forEach items="${indexManagedBean.cars}" var="car" varStatus="status">
+                    <div id="car-detail" style="width: 200px; height: 250px">
+                        <ul>
+                            <li><p class="car-description" >#{car.description}</p></li>
+                            <li><img src="pic/#{car.thumbNail}"/> </li>
+                            <li><p>#{car.previewUrl}</p></li>
+                        </ul>
+                    </div>
+                </c:forEach>
+            </div>
+            
+        </div>
+            
+            
+            <footer id="footer" class="container">
+                 <p class="copyright">Copyright &copy; 2016. By Alex. All rights reserved</p>
+            </footer>
+      
+    
+    </h:body>
+ </div>
+    
+</html>
+
